@@ -1,0 +1,159 @@
+.app {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    height: 100vh;
+    max-width: 700px;
+}
+
+.header,
+.footer {
+    background-color: lightskyblue;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+}
+
+.header h1 {
+    font-size: 1.5rem;
+}
+
+.header svg {
+    font-size: 2rem;
+}
+
+.nav {
+    background-color: black;
+}
+
+.nav-link {
+    display: flex;
+    padding-bottom: 1rem;
+}
+
+.nav-link li {
+    list-style: none;
+}
+
+.nav-link a {
+    color: white;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-decoration: none;
+    margin: 1rem;
+}
+
+.searchForm {
+    padding: 1rem;
+}
+
+#search {
+    height: 2rem;
+    width: 70%;
+}
+
+.home,
+.newPost,
+.missing,
+.about,
+.postPage {
+    padding: 1rem;
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
+.home {
+    padding-top: 0;
+}
+
+.newPostForm {
+    display: flex;
+    flex-direction: column;
+}
+
+.newPostForm label {
+    margin-top: 1rem;
+}
+
+.newPostForm input {
+    margin-top: 0.3rem;
+    height: 2rem;
+}
+
+.newPostForm textarea {
+    margin-top: 0.3rem;
+    height: 6rem;
+}
+
+.newPostForm button {
+    margin-top: 1rem;
+    height: 2rem;
+    width: 8rem;
+    color: black;
+    align-self: center;
+    background-color: green;
+}
+
+.post {
+    border-top: 1px solid lightgray;
+    padding: 1rem 0;
+}
+
+.post a {
+    text-decoration: none;
+    color: black;
+}
+
+.postDate {
+    padding: 0.3rem 0;
+    font-size: 0.7rem;
+}
+
+.postBody {
+    padding: 1rem 0;
+}
+
+.postPage h2 {
+    margin-bottom: 1rem;
+}
+
+.postPage button {
+    margin-right: 0.5rem;
+    height: 2rem;
+    padding: 0 0.5rem;
+    color: black
+}
+
+.editButton {
+    background-color: green;
+}
+
+.deleteButton {
+    background-color: red;
+}
+
+.statusMsg {
+    margin: 2rem 0;
+}
+
+.errorMsg {
+    color: red;
+}
+
+.missing p {
+    margin: 1rem 0;
+}
+
+.postPage p {
+    margin: 1rem 0;
+}
+
+.about p {
+    margin-top: 1rem;
+}
+
+.footer {
+    display: grid;
+    place-content: center;
+}
