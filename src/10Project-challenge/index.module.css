@@ -1,0 +1,38 @@
+.colorBoard {
+    margin: 100px auto 16px;
+    width: 200px;
+    height: 200px;
+    border: 1px solid black;
+    display: grid;
+    place-content: center;
+}
+#colorNameInput {
+    display: block;
+    margin: auto;
+    width: 194px;
+    height: 32px;
+    
+}
+#colorName {
+    text-align: center;
+    margin: 6px;
+}
+#changeTextColor {
+    display: block;
+    margin: 16px auto;
+    width: 200px;
+    height: 32px;
+}
+.inputSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.darkColor {
+    color: #000;
+    background-color: #FFF;
+}
+.lightColor {
+    color: #FFF;
+    background-color: #000;
+}
