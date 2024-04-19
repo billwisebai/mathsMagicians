@@ -1,0 +1,25 @@
+.topBar {
+    display: flex;
+    width: 100vw;
+}
+.topBarButton {
+    width: 100%;
+    height: 3rem;
+    border-color: 1px solid black;
+    border-radius: 0;
+}
+.selected {
+    background-color: black;
+    color: white;
+}
+.dataTable {
+    width: 100vw;
+    overflow-y: auto;
+
+}
+.dataTable th,td {
+    border: 1px solid black;
+}
+.main {
+    width: 100vw;
+}
