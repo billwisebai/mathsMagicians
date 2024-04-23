@@ -11,7 +11,7 @@ import { Route, Routes } from 'react-router-dom';
 // import { Route, Routes, useNavigate } from 'react-router-dom';
 // import { useEffect, useState } from "react";
 // import { format } from "date-fns";
-// import api from "../api/posts";
+// import api from "../api/axios";
 // import useWindowSize from "../hooks/useWindowSize";
 // import useAxiosFetch from "../hooks/useAxiosFetch";
 import { DataProvider } from "../context/DataContext";

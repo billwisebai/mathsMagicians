@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom"
 import DataContext from "../context/DataContext";
-import api from "../api/posts"
+import api from "../api/axios"
 import styles from './index.module.css';
 
 const withPosts = (Component) => {

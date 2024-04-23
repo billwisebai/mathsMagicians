@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react"
 import DataContext from "../context/DataContext"
-import api from "../api/posts"
+import api from "../api/axios"
 import { format } from "date-fns"
 import { useNavigate } from "react-router-dom"
 import styles from './index.module.css';

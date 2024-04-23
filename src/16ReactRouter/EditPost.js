@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom"
 import DataContext from "../context/DataContext";
-import api from "../api/posts";
+import api from "../api/axios";
 import { format } from "date-fns";
 import styles from './index.module.css';
 
