@@ -3,8 +3,12 @@ import InputText from './formElements/InputText';
 import NumberRange from './formElements/NumberRange';
 import styles from './index.module.css';
 import createMathQuestion from '../tools/createMathQuestion';
+import { useStoreActions } from 'easy-peasy';
 
-const InputForm = ({ setAllQuestions, setQuestionQuantity }) => {
+const InputForm = () => {
+    const setAllQuestions = useStoreActions((actions) => actions.setAllQuestions);
+    const setQuestionQuantity = useStoreActions((actions) => actions.setQuestionQuantity);
+
     const [min, setMin] = useState('');
     const [max, setMax] = useState('');
     const [operations, setOperations] = useState([]);

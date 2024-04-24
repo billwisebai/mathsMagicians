@@ -8,20 +8,24 @@ import reportWebVitals from './reportWebVitals';
 // import ReactRouterExample from './16ReactRouter/ReactRouterExample';
 // import { BrowserRouter as Router } from 'react-router-dom';
 import MathsMagicians from './maths-magicians';
+import { StoreProvider } from 'easy-peasy';
+import store from './store/store';
 // import ShoppingList from './ShoppingList';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-    <React.StrictMode>
-        {/* <App /> */}
-        {/* <ShoppingList /> */}
-        {/* <ProjectChanllenge10 /> */}
-        {/* <ProjectChanllenge15 /> */}
-        {/* <Router>
+    <StoreProvider store={store} >
+        <React.StrictMode>
+            {/* <App /> */}
+            {/* <ShoppingList /> */}
+            {/* <ProjectChanllenge10 /> */}
+            {/* <ProjectChanllenge15 /> */}
+            {/* <Router>
             <ReactRouterExample />
         </Router> */}
-        <MathsMagicians />
-    </React.StrictMode>
+            <MathsMagicians />
+        </React.StrictMode>
+    </StoreProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function

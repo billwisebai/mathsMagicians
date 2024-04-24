@@ -162,6 +162,7 @@
 .questionsPage p {
     margin: 1rem 0;
 }
+
 .questions {
     border-top: 1px solid lightgray;
     padding: 1rem 0;
@@ -176,6 +177,7 @@
     padding: 0.5rem 0;
     font-size: 0.7rem;
 }
+
 .questionsQuantity {
     padding: 0.5rem 0;
 }

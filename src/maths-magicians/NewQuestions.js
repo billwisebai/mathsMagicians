@@ -1,15 +1,17 @@
-import { useState } from "react"
-import api from "../api/axios"
 import { format } from "date-fns"
 import { useNavigate } from "react-router-dom"
 import styles from './index.module.css';
 import InputForm from "./InputForm"
 import getCurrentDate from "../tools/getCurrentDate"
 import ListItems from "./ListItems"
+import { useStoreActions, useStoreState } from "easy-peasy";
 
-const NewQuestions = ({ mathQuestions, setMathQuestions }) => {
-  const [allQuestions, setAllQuestions] = useState([]);
-  const [questionQuantity, setQuestionQuantity] = useState(0);
+const NewQuestions = () => {
+  const mathQuestions = useStoreState((state) => state.mathQuestions);
+  const allQuestions = useStoreState((state) => state.allQuestions);
+  const questionQuantity = useStoreState((state) => state.questionQuantity);
+  const setAllQuestions = useStoreActions((actions) => actions.setAllQuestions);
+  const saveQuestions = useStoreActions((actions) => actions.saveQuestions);
   const currentDate = getCurrentDate();
   const navigate = useNavigate();
 
@@ -21,58 +23,17 @@ const NewQuestions = ({ mathQuestions, setMathQuestions }) => {
       quantity: questionQuantity,
       body: allQuestions,
     }
-    try {
-      const response = await api.post('/math_questions', questions);
-      setMathQuestions([...mathQuestions, response.data]);
-      setAllQuestions([]);
-      setQuestionQuantity(0);
-      navigate('/');
-    } catch (err) {
-      console.log(`Error: ${err.message}`);
-    }
+    saveQuestions(questions);
+    navigate('/')
   }
 
   const handleCancel = () => {
     setAllQuestions([]);
   }
 
-  // const printQuestions = () => {
-  //   setPrinting(true);
-  //   setTimeout(() => {
-  //     window.print();
-  //     setPrinting(false);
-  //   }, 0);
-  // }
-  // console.log("newpost");     
-
-  // const [ newPost, setNewPost ] = useState({ title: '', body: '' });
-  // const navigate = useNavigate();
-
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   const post = {
-  //     id: posts.length ? String(Number(posts[posts.length - 1].id) + 1) : '1',
-  //     title: newPost.title,
-  //     datetime: format(new Date(), 'MMMM dd, yyyy pp'),
-  //     body: newPost.body,
-  //   }
-  //   try {
-  //     const response = await api.post('/posts', post);
-  //     setPosts([...posts, response.data]);
-  //     setNewPost({ title: '', body: '' });
-  //     navigate('/');
-  //   } catch (err) {
-  //     console.log(`Error: ${err.message}`);
-  //   }
-  // }
   return (
     <main className={styles.newQuestions}>
-      <InputForm
-        allQuestions={allQuestions}
-        setAllQuestions={setAllQuestions}
-        questionQuantity={questionQuantity}
-        setQuestionQuantity={setQuestionQuantity}
-      />
+      <InputForm />
       {allQuestions.length > 0 &&
         <div className={styles.questionsBox}>
           <section className={styles.questionTitleSection}>
@@ -90,28 +51,6 @@ const NewQuestions = ({ mathQuestions, setMathQuestions }) => {
           </section>
         </div>
       }
-      {/* <h2>New Post</h2>
-      <form className={styles.newPostForm} onSubmit={handleSubmit}>
-          <label htmlFor="postTitle">Title:</label>
-          <input 
-              id='postTitle'
-              type="text"
-              placeholder="Post Title"
-              required 
-              value={newPost.title}
-              onChange={(e) => setNewPost({ ...newPost, title: e.target.value })}
-          />
-          <label htmlFor="postBody">Post:</label>
-          <textarea 
-              id='postBody'
-              type="text"
-              placeholder="Post Body"
-              required
-              value={newPost.body}
-              onChange={(e) => setNewPost({ ...newPost, body: e.target.value })}
-          />
-          <button onClick={handleSubmit} >Submit</button>
-      </form> */}
     </main>
   )
 }

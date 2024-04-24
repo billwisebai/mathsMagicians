@@ -1,8 +1,12 @@
+import { useStoreState } from 'easy-peasy';
 import ListQuestions from './ListQuestions'
 import styles from './index.module.css';
 
-const Home = ({ mathQuestions, error, isLoading }) => {
+
+const Home = ({ error, isLoading }) => {
     console.log("home");
+
+    const mathQuestions = useStoreState((state) => state.mathQuestions);
 
     return (
         <main className={styles.home}>

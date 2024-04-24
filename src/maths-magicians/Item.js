@@ -1,6 +1,6 @@
 import styles from './index.module.css'
 
-const Item = ({item}) => {
+const Item = ({ item }) => {
     return (
         <li className={styles.question_li}>
             {item}

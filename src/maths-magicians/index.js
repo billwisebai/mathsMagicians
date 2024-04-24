@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import styles from './index.module.css';
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import Header from "./Header";
@@ -11,15 +11,16 @@ import About from "./About";
 import Missing from "./Missing";
 import Footer from "./Footer";
 import useAxiosFetch from "../hooks/useAxiosFetch";
+import { useStoreState, useStoreActions } from "easy-peasy";
 
 const MathsMagicians = () => {
-    const [mathQuestions, setMathQuestions] = useState([]);
-    const [printing, setPrinting] = useState(false);
+    const printing = useStoreState((state) => state.printing);
+    const setMathQuestions = useStoreActions((actions) => actions.setMathQuestions)
     const { data, error, isLoading } = useAxiosFetch('http://localhost:3500/math_questions')
 
     useEffect(() => {
         setMathQuestions(data);
-    }, [data])
+    }, [data, setMathQuestions])
 
     return (
         <Router>
@@ -27,10 +28,9 @@ const MathsMagicians = () => {
                 {!printing && <Header title="Maths Magicians " />}
                 {!printing && <Nav />}
                 <Routes>
-                    <Route path="/" element={<Home mathQuestions={mathQuestions} error={error} isLoading={isLoading} />} />
-                    <Route path="/math_questions" element={<NewQuestions mathQuestions={mathQuestions} setMathQuestions={setMathQuestions} />} />
-                    {/* <Route path="/edit/:id" element={<EditQuestions />} /> */}
-                    <Route path="/math_questions/:id" element={<QuestionsPage mathQuestions={mathQuestions} setMathQuestions={setMathQuestions} printing={printing} setPrinting={setPrinting} />} />
+                    <Route path="/" element={<Home error={error} isLoading={isLoading} />} />
+                    <Route path="/math_questions" element={<NewQuestions />} />
+                    <Route path="/math_questions/:id" element={<QuestionsPage />} />
                     <Route path="/about" element={<About />} />
                     <Route path="/*" element={<Missing />} />
                 </Routes>
