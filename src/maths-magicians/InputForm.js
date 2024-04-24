@@ -20,13 +20,14 @@ const InputForm = ({ setAllQuestions, setQuestionQuantity }) => {
     };
 
     const handleSubmit = () => {
+        setAllQuestions([]);
         if (min && max && operations.length > 0 && quantity) {
             let totalQuantity = 0;
             if (Array.isArray(operations) && operations.length > 0) {
                 if (operations.includes('-')) {
-                    totalQuantity = (max - min) * (operations.length - 1) * (max - min) + (min + max) * (max - min) / 2;
+                    totalQuantity = (max - min + 1) * (operations.length - 1) * (max - min + 1) + (1 + (max - min)) * (max - min) / 2;
                 } else {
-                    totalQuantity = (max - min) * operations.length * (max - min);
+                    totalQuantity = (max - min + 1) * operations.length * (max - min + 1);
                 }
             }
             if (quantity > totalQuantity) {
@@ -37,7 +38,7 @@ const InputForm = ({ setAllQuestions, setQuestionQuantity }) => {
             let questions = [];
             let number = quantity;
             while (number > 0) {
-                let question = createMathQuestion(Number(min), Number(max), operations);
+                let question = createMathQuestion(Number(min), (Number(max) + 1), operations);
                 if (question && !questions.includes(question)) {
                     questions.push(question);
                     number--;
@@ -115,7 +116,7 @@ const InputForm = ({ setAllQuestions, setQuestionQuantity }) => {
                 text={quantity}
                 setText={setQuantity}
             />
-            <section className={styles.submitReset}>
+            <section className={styles.submitResetButton}>
                 <button className={styles.submit} onClick={handleSubmit} >Submit</button>
                 <button className={styles.reset} onClick={handleReset} >Reset</button>
             </section>

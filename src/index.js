@@ -1,14 +1,27 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
+// import App from './App';
 import reportWebVitals from './reportWebVitals';
+// import ProjectChanllenge10 from './10Project-challenge';
+// import ProjectChanllenge15 from './15Project-challenge';
+// import ReactRouterExample from './16ReactRouter/ReactRouterExample';
+// import { BrowserRouter as Router } from 'react-router-dom';
+import MathsMagicians from './maths-magicians';
+// import ShoppingList from './ShoppingList';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+    <React.StrictMode>
+        {/* <App /> */}
+        {/* <ShoppingList /> */}
+        {/* <ProjectChanllenge10 /> */}
+        {/* <ProjectChanllenge15 /> */}
+        {/* <Router>
+            <ReactRouterExample />
+        </Router> */}
+        <MathsMagicians />
+    </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function

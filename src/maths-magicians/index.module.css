@@ -1,30 +1,111 @@
+.app {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    height: 100vh;
+    max-width: 50rem;
+}
+
 .main {
-    margin-top: 8px;
+    margin-top: 0.5rem;
+}
+
+.header,
+.footer {
+    background-color: lightskyblue;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+}
+
+.header h1 {
+    font-size: 1.5rem;
+}
+
+.header svg {
+    font-size: 2rem;
+}
+
+.footer {
+    display: grid;
+    place-content: center;
+}
+
+.home,
+.newQuestions,
+.missing,
+.about,
+.questionsPage {
+    padding: 1rem;
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
+.home {
+    padding-top: 0;
+}
+
+.nav {
+    background-color: black;
+}
+
+.nav-link {
+    display: flex;
+    padding: 1rem 0;
+}
+
+.nav-link li {
+    list-style: none;
+}
+
+.nav-link a {
+    color: white;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-decoration: none;
+    margin: 1rem;
+}
+
+.searchForm {
+    padding: 1rem;
+}
+
+#search {
+    height: 2rem;
+    width: 70%;
+}
+
+.questionsBox {
+    border-top: 1px solid black;
 }
 
 .title {
-    margin: 16px auto;
+    margin: 1rem auto;
     text-align: center;
 }
 
 .question_ul {
     list-style: none;
+    /* display:inline-block; */
+    /* float: left; */
     column-count: 4;
-    column-gap: 72px;
-    padding-top: 16px;
+    column-gap: 4rem;
+    padding-top: 1rem;
 }
 
 .question_li {
-    margin-bottom: 24px;
-    font-size: 24px;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
 }
 
 .warning {
-    margin: 50px auto;
+    margin: 3rem auto;
     color: red;
 }
 
-.inputForm {
+.inputForm,
+.questionTitleSection {
     display: flex;
     flex-direction: column;
     width: 60%;
@@ -36,26 +117,26 @@
 }
 
 .checkboxOptions {
-    /* margin-left: 16px; */
     display: flex;
     flex-direction: column;
 }
 
 .checkboxOptions input {
-    margin: 0 16px 8px;
+    margin: 0 1rem 0.5rem;
 }
 
-.submitReset {
+.submitResetButton {
     display: flex;
     justify-content: space-around;
-    margin: 12px 0;
+    margin: 0.75rem 0;
 }
 
-button {
+.submitResetButton button {
     color: white;
-    padding: 8px 16px;
-    border-radius: 10px;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
     font-weight: 600;
+    width: 8rem
 }
 
 .submit {
@@ -65,7 +146,36 @@ button {
 .reset {
     background-color: red;
 }
-.printSection {
-    display: flex;
-    justify-content: center;
+
+.statusMsg {
+    margin: 2rem 0;
+}
+
+.errorMsg {
+    color: red;
+}
+
+.missing p {
+    margin: 1rem 0;
+}
+
+.questionsPage p {
+    margin: 1rem 0;
+}
+.questions {
+    border-top: 1px solid lightgray;
+    padding: 1rem 0;
+}
+
+.questions a {
+    text-decoration: none;
+    color: black;
+}
+
+.questionsDate {
+    padding: 0.5rem 0;
+    font-size: 0.7rem;
+}
+.questionsQuantity {
+    padding: 0.5rem 0;
 }
