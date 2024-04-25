@@ -13,6 +13,7 @@ const InputForm = () => {
     const [max, setMax] = useState('');
     const [operations, setOperations] = useState([]);
     const [quantity, setQuantity] = useState('');
+    const [warning, setWarning] = useState('');
 
     const handleCheckboxChange = (e) => {
         const { value, checked } = e.target;
@@ -26,6 +27,13 @@ const InputForm = () => {
     const handleSubmit = () => {
         setAllQuestions([]);
         if (min && max && operations.length > 0 && quantity) {
+            if (min > max) {
+                setWarning('The min number is larger than the max number!')
+                return false;
+            } else if (min === max) {
+                setWarning('The min number is equal to the max number!')
+                return false;
+            }
             let totalQuantity = 0;
             if (Array.isArray(operations) && operations.length > 0) {
                 if (operations.includes('-')) {
@@ -35,9 +43,8 @@ const InputForm = () => {
                 }
             }
             if (quantity > totalQuantity) {
-                return (
-                    <h4 className={styles.warning}>The quantity is larger than the total possible quantity</h4>
-                )
+                setWarning('The quantity is larger than the total possible quantity!')
+                return false;
             }
             let questions = [];
             let number = quantity;
@@ -50,6 +57,10 @@ const InputForm = () => {
             }
             setAllQuestions(questions);
             setQuestionQuantity(quantity);
+            setWarning('');
+        } else {
+            setWarning('Please fill all fields!');
+            return false;
         }
     };
     const handleReset = () => {
@@ -59,6 +70,7 @@ const InputForm = () => {
         setQuantity('');
         setAllQuestions([]);
         setQuestionQuantity(0);
+        setWarning('');
     };
 
     return (
@@ -124,6 +136,7 @@ const InputForm = () => {
                 <button className={styles.submit} onClick={handleSubmit} >Submit</button>
                 <button className={styles.reset} onClick={handleReset} >Reset</button>
             </section>
+            {warning && <h4 className={styles.warning}>{warning}</h4>}
         </form>
     )
 }
