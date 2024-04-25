@@ -2,12 +2,14 @@ import styles from './formElements.module.css';
 
 const InputText = ({ name, type = 'string', text, setText }) => {
     const handleChange = (e) => {
-        if (type === 'number') {
-            if (!isNaN(e.target.value)) {
-                setText(e.target.value)
+        if (e.target.value !== ' ') {
+            if (type === 'number') {
+                if (!isNaN(e.target.value)) {
+                    setText(e.target.value.trim());
+                }
+            } else {
+                setText(e.target.value.trim());
             }
-        } else {
-            setText(e.target.value)
         }
     }
     return (

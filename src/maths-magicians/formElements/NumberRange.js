@@ -2,8 +2,8 @@ import styles from './formElements.module.css';
 
 const NumberRange = ({ min, setMin, max, setMax }) => {
     const handleChange = (e, set) => {
-        if (!isNaN(e.target.value)) {
-            set(e.target.value)
+        if (!isNaN(e.target.value) && e.target.value !== ' ') {
+            set(e.target.value.trim())
         }
     }
     return (
