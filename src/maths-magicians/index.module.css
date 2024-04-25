@@ -166,6 +166,7 @@
 .questions {
     border-top: 1px solid lightgray;
     padding: 1rem 0;
+    display: flex;
 }
 
 .questions a {
@@ -180,4 +181,18 @@
 
 .questionsQuantity {
     padding: 0.5rem 0;
+}
+.homePageIcon {
+    width: 2rem;
+    height: 2rem;
+    margin-right: 1rem;
+}
+.questionPageIcon {
+    width: 4rem;
+    position: absolute;
+    top: 2rem;
+    right: 3rem;
+}
+.questionsPage {
+    position: relative;
 }

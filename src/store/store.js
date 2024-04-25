@@ -32,6 +32,16 @@ export default createStore({
             console.log(`Error: ${err.message}`);
         }
     }),
+    editQuestions: thunk(async (actions, updateQuestions, helpers) => {
+        const { mathQuestions } = helpers.getState();
+        const { id } = updateQuestions;
+        try {
+            const response = await api.put(`/math_questions/${id}`, updateQuestions);
+            actions.setMathQuestions(mathQuestions.map(item => item.id === id ? { ...response.data } : item));
+        } catch (err) {
+            console.log(`Error: ${err.message}`);
+        }
+    }),
     deleteQuestions: thunk(async (actions, id, helpers) => {
         const { mathQuestions } = helpers.getState();
         try {

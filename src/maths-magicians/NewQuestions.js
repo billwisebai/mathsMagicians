@@ -22,6 +22,7 @@ const NewQuestions = () => {
       datetime: format(new Date(), 'MMMM dd, yyyy pp'),
       quantity: questionQuantity,
       body: allQuestions,
+      isArchived: true,
     }
     saveQuestions(questions);
     navigate('/')

@@ -2,6 +2,8 @@ import { Link, useNavigate, useParams } from "react-router-dom"
 import styles from './index.module.css';
 import ListItems from "./ListItems";
 import { useStoreActions, useStoreState } from "easy-peasy";
+import PikachuWithColor from "../icons/Pikachu with color.png"
+import PikachuWithoutColor from "../icons/Pikachu without color.png"
 
 const QuestionsPage = () => {
     console.log("postpage");
@@ -9,6 +11,7 @@ const QuestionsPage = () => {
     const { id } = useParams();
     const printing = useStoreState((state) => state.printing);
     const printMathQuestion = useStoreActions((actions) => actions.printMathQuestion)
+    const editQuestions = useStoreActions((actions) => actions.editQuestions)
     const deleteQuestions = useStoreActions((actions) => actions.deleteQuestions)
     const getMathQuestionById = useStoreState((actions) => actions.getMathQuestionById);
     const mathQuestion = getMathQuestionById(id);
@@ -18,24 +21,29 @@ const QuestionsPage = () => {
         navigate('/');
     }
 
+    const handleIconClick = () => {
+        editQuestions({ ...mathQuestion, isArchived: !mathQuestion.isArchived });
+    }
+
     return (
         <main className={styles.questionsPage}>
             {mathQuestion ?
                 (
                     <article>
                         <section className={styles.questionTitleSection}>
-                            <section >
-                                <h2 className={styles.title}>({mathQuestion.title})</h2>
+                            <section>
+                                <h2 className={styles.title}>{mathQuestion.title}</h2>
                                 <h3 className={styles.title}>Total questions: {mathQuestion.quantity}</h3>
                             </section>
                             {!printing && <section className={styles.submitResetButton}>
                                 <button className={styles.submit} onClick={printMathQuestion} >Print</button>
-                                <button className={styles.reset} onClick={handleDelete} >Delete</button>
+                                {!mathQuestion.isArchived && <button className={styles.reset} onClick={handleDelete} >Delete</button>}
                             </section>}
                         </section>
                         <section>
                             <ListItems list={mathQuestion.body} />
                         </section>
+                        <img className={styles.questionPageIcon} src={mathQuestion.isArchived ? PikachuWithColor : PikachuWithoutColor} alt="pikachu with color" onClick={handleIconClick} />
                     </article>
                 ) : (
                     <>
