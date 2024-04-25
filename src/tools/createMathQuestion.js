@@ -12,10 +12,10 @@ const createMathQuestion = (min, max, operations) => {
             case '-':
                 question = rndInt1 > rndInt2 ? rndInt1 + operation + rndInt2 : (rndInt1 < rndInt2 ? rndInt2 + operation + rndInt1 : '');
                 break;
-            case '*':
+            case 'x':
                 question = rndInt1 + operation + rndInt2;
                 break;
-            case '/':
+            case '÷':
                 question = rndInt1 * rndInt2 + operation + rndInt1;
                 break;
             default:

@@ -97,20 +97,20 @@ const InputForm = () => {
                         <input
                             type='checkbox'
                             name='multiplication'
-                            value='*'
-                            checked={operations.includes('*')}
+                            value='x'
+                            checked={operations.includes('x')}
                             onChange={handleCheckboxChange}
                         />
-                        <label htmlFor='multiplication'>* Multiplication</label>
+                        <label htmlFor='multiplication'>x Multiplication</label>
                     </div>
                     <div>
                         <input
                             type='checkbox'
                             name='division'
-                            value='/'
-                            checked={operations.includes('/')}
+                            value='÷'
+                            checked={operations.includes('÷')}
                             onChange={handleCheckboxChange} />
-                        <label htmlFor='division'>/ Division</label>
+                        <label htmlFor='division'>÷ Division</label>
                     </div>
                 </div>
             </section>
