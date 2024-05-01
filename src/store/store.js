@@ -6,6 +6,14 @@ export default createStore({
     setMathQuestions: action((state, payload) => {
         state.mathQuestions = payload;
     }),
+    icons: [],
+    setIcons: action((state, payload) => {
+        state.icons = payload;
+    }),
+    currentIcon: {},
+    setCurrentIcon: action((state, payload) => {
+        state.currentIcon = payload;
+    }),
     printing: false,
     setPrinting: action((state, payload) => {
         state.printing = payload;
@@ -24,7 +32,7 @@ export default createStore({
     saveQuestions: thunk(async (actions, questions, helpers) => {
         const { mathQuestions } = helpers.getState();
         try {
-            const response = await api.post('/math_questions', questions);
+            const response = await api.post('/maths_magicians', questions);
             actions.setMathQuestions([...mathQuestions, response.data]);
             actions.setAllQuestions([]);
             actions.setQuestionQuantity(0);
@@ -36,7 +44,7 @@ export default createStore({
         const { mathQuestions } = helpers.getState();
         const { id } = updateQuestions;
         try {
-            const response = await api.put(`/math_questions/${id}`, updateQuestions);
+            const response = await api.put(`/maths_magicians/${id}`, updateQuestions);
             actions.setMathQuestions(mathQuestions.map(item => item.id === id ? { ...response.data } : item));
         } catch (err) {
             console.log(`Error: ${err.message}`);
@@ -45,7 +53,7 @@ export default createStore({
     deleteQuestions: thunk(async (actions, id, helpers) => {
         const { mathQuestions } = helpers.getState();
         try {
-            await api.delete(`/math_questions/${id}`)
+            await api.delete(`/maths_magicians/${id}`)
             actions.setMathQuestions(mathQuestions.filter(item => item.id !== id));
         } catch (err) {
             console.log(`Error: ${err.message}`)
@@ -57,5 +65,15 @@ export default createStore({
             window.print();
             actions.setPrinting(false);
         }, 0);
+    }),
+    editIcons: thunk(async (actions, updateIcons, helpers) => {
+        const { icons } = helpers.getState();
+        const { id } = updateIcons;
+        try {
+            const response = await api.put(`/icons/${id}`, updateIcons);
+            actions.setIcons(icons.map(item => item.id === id ? { ...response.data } : item));
+        } catch (err) {
+            console.log(`Error: ${err.message}`);
+        }
     }),
 });

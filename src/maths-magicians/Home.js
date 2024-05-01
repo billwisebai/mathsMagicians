@@ -3,16 +3,16 @@ import ListQuestions from './ListQuestions'
 import styles from './index.module.css';
 
 
-const Home = ({ error, isLoading }) => {
+const Home = ({ mathError, mathIsLoading, iconError, iconIsloading }) => {
     console.log("home");
 
     const mathQuestions = useStoreState((state) => state.mathQuestions);
 
     return (
         <main className={styles.home}>
-            {isLoading && <p className={styles.statusMsg}>Loading Maths Questions...</p>}
-            {!isLoading && error && <p className={`${styles.statusMsg} ${styles.errorMsg}`}>{error}</p>}
-            {!isLoading && !error && (mathQuestions.length > 0 ?
+            {(mathIsLoading || iconIsloading) && <p className={styles.statusMsg}>Loading Maths Questions...</p>}
+            {!mathIsLoading && !iconIsloading && (mathError || iconError) && <p className={`${styles.statusMsg} ${styles.errorMsg}`}>{mathError ? mathError : iconError}</p>}
+            {!mathIsLoading && !iconIsloading && !mathError && !iconError && (mathQuestions.length > 0 ?
                 (mathQuestions.map((questions) => (
                     <section key={questions.id} >
                         <ListQuestions questions={questions} />

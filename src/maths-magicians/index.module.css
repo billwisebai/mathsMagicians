@@ -35,6 +35,7 @@
 .home,
 .newQuestions,
 .missing,
+.settings,
 .about,
 .questionsPage {
     padding: 1rem;
@@ -182,17 +183,48 @@
 .questionsQuantity {
     padding: 0.5rem 0;
 }
+
 .homePageIcon {
     width: 2rem;
     height: 2rem;
     margin-right: 1rem;
 }
+
 .questionPageIcon {
     width: 4rem;
+    height: 4rem;
     position: absolute;
     top: 2rem;
     right: 3rem;
 }
+
 .questionsPage {
     position: relative;
+}
+
+.iconSetting {
+    margin: 1rem 0;
+    display: flex;
+    align-items: center;
+    /* justify-content: space-between; */
+}
+
+.iconSelection {
+    margin: 1rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.5rem;
+}
+
+.settingPageIcon {
+    margin-left: 6rem;
+    width: 6rem;
+    height: 6rem;
+}
+.iconSubmit {
+    color: white;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    width: 6rem;
+    background-color: green;
 }

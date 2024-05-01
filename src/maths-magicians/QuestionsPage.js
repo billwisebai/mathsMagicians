@@ -2,8 +2,6 @@ import { Link, useNavigate, useParams } from "react-router-dom"
 import styles from './index.module.css';
 import ListItems from "./ListItems";
 import { useStoreActions, useStoreState } from "easy-peasy";
-import PikachuWithColor from "../icons/Pikachu with color.png"
-import PikachuWithoutColor from "../icons/Pikachu without color.png"
 
 const QuestionsPage = () => {
     console.log("postpage");
@@ -15,6 +13,7 @@ const QuestionsPage = () => {
     const deleteQuestions = useStoreActions((actions) => actions.deleteQuestions)
     const getMathQuestionById = useStoreState((actions) => actions.getMathQuestionById);
     const mathQuestion = getMathQuestionById(id);
+    const currentIcon = useStoreState((state) => state.currentIcon);
 
     const handleDelete = async () => {
         deleteQuestions(id);
@@ -43,7 +42,7 @@ const QuestionsPage = () => {
                         <section>
                             <ListItems list={mathQuestion.body} />
                         </section>
-                        <img className={styles.questionPageIcon} src={mathQuestion.isArchived ? PikachuWithColor : PikachuWithoutColor} alt="pikachu with color" onClick={handleIconClick} />
+                        {currentIcon.name && <img className={styles.questionPageIcon} src={mathQuestion.isArchived ? require(`../icons/${currentIcon.name} with color.png`) : require(`../icons/${currentIcon.name} without color.png`)} alt="pikachu with color" onClick={handleIconClick} />}
                     </article>
                 ) : (
                     <>
