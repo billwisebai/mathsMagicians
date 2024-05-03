@@ -23,6 +23,7 @@ const NewQuestions = () => {
       quantity: questionQuantity,
       body: allQuestions,
       isArchived: true,
+      result: []
     }
     saveQuestions(questions);
     navigate('/')

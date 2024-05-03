@@ -5,6 +5,10 @@
     align-items: center;
 }
 
+.inputText input {
+    padding: 0.25rem;
+}
+
 .label {
     margin-right: 16px;
 }

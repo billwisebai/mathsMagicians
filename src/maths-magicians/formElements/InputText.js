@@ -8,7 +8,7 @@ const InputText = ({ name, type = 'string', text, setText }) => {
                     setText(e.target.value.trim());
                 }
             } else {
-                setText(e.target.value.trim());
+                setText(e.target.value);
             }
         }
     }
@@ -17,6 +17,7 @@ const InputText = ({ name, type = 'string', text, setText }) => {
             <label className={styles.label}>{name}: </label>
             <input
                 type='text'
+                size={name.length > text.length ? name.length + 1 : text.length + 1}
                 placeholder={name}
                 value={text}
                 onChange={handleChange}

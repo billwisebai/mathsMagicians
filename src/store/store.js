@@ -40,11 +40,11 @@ export default createStore({
             console.log(`Error: ${err.message}`);
         }
     }),
-    editQuestions: thunk(async (actions, updateQuestions, helpers) => {
+    updateQuestions: thunk(async (actions, updatedMathQuestion, helpers) => {
         const { mathQuestions } = helpers.getState();
-        const { id } = updateQuestions;
+        const { id } = updatedMathQuestion;
         try {
-            const response = await api.put(`/maths_magicians/${id}`, updateQuestions);
+            const response = await api.put(`/maths_magicians/${id}`, updatedMathQuestion);
             actions.setMathQuestions(mathQuestions.map(item => item.id === id ? { ...response.data } : item));
         } catch (err) {
             console.log(`Error: ${err.message}`);
@@ -66,7 +66,7 @@ export default createStore({
             actions.setPrinting(false);
         }, 0);
     }),
-    editIcons: thunk(async (actions, updateIcons, helpers) => {
+    updateIcons: thunk(async (actions, updateIcons, helpers) => {
         const { icons } = helpers.getState();
         const { id } = updateIcons;
         try {

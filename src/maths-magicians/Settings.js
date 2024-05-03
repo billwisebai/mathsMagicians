@@ -10,7 +10,7 @@ const Settings = () => {
   const icons = useStoreState((state) => state.icons);
   const currentIcon = useStoreState((state) => state.currentIcon);
   const setCurrentIcon = useStoreActions((actions) => actions.setCurrentIcon);
-  const editIcons = useStoreActions((actions) => actions.editIcons);
+  const updateIcons = useStoreActions((actions) => actions.updateIcons);
 
   useEffect(() => {
     if (currentIcon) {
@@ -26,8 +26,8 @@ const Settings = () => {
   const handleIconSubmit = (e) => {
     e.preventDefault();
     setCurrentIcon({ ...selectedIcon, current: true });
-    editIcons({ ...currentIcon, current: false })
-    editIcons({ ...selectedIcon, current: true });
+    updateIcons({ ...currentIcon, current: false })
+    updateIcons({ ...selectedIcon, current: true });
     setSelectedIcon({})
     navigate('/');
   }
