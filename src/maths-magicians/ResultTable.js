@@ -1,7 +1,11 @@
 import { useStoreActions } from 'easy-peasy'
 import styles from './index.module.css'
+import ConfirmDialog from './ConfirmDialog';
+import { useState } from 'react';
 
 const ResultTable = ({ mathQuestion, setEditResult, setUpdatedResult }) => {
+    const [showDeleteResultConfirmDialog, setShowDeleteResultConfirmDialog] = useState(false);
+    const [indexOfDeleteResult, setIndexOfDeleteResult] = useState(null);
     const updateQuestions = useStoreActions((actions) => actions.updateQuestions);
 
     const handleEdit = (index) => {
@@ -9,7 +13,12 @@ const ResultTable = ({ mathQuestion, setEditResult, setUpdatedResult }) => {
         setEditResult(true);
     }
     const handleDelete = (index) => {
-        mathQuestion.result.splice(index, 1);
+        setShowDeleteResultConfirmDialog(true);
+        setIndexOfDeleteResult(index);
+    }
+    const deleteResult = () => {
+        setShowDeleteResultConfirmDialog(false);
+        mathQuestion.result.splice(indexOfDeleteResult, 1);
         updateQuestions(mathQuestion);
     }
 
@@ -43,6 +52,7 @@ const ResultTable = ({ mathQuestion, setEditResult, setUpdatedResult }) => {
             <section className={styles.submitResetButton}>
                 <button className={styles.submit} onClick={() => setEditResult(true)} >Add Result</button>
             </section>
+            {showDeleteResultConfirmDialog && <ConfirmDialog name='delete' setConfirmDialog={setShowDeleteResultConfirmDialog} action={deleteResult} />}
         </section>
     )
 }
