@@ -3,7 +3,7 @@ import styles from './index.module.css'
 import NewResult from './NewResult';
 import ResultTable from './ResultTable';
 
-const Result = ({ mathQuestion }) => {
+const Result = ({ mathQuestion, setShowResult }) => {
     const [editResult, setEditResult] = useState(false);
     const [updatedResult, setUpdatedResult] = useState({});
 
@@ -21,6 +21,7 @@ const Result = ({ mathQuestion }) => {
                     mathQuestion={mathQuestion}
                     setEditResult={setEditResult}
                     setUpdatedResult={setUpdatedResult}
+                    setShowResult={setShowResult}
                 />)
             }
         </section>

@@ -52,7 +52,7 @@ const QuestionsPage = () => {
                                 {!mathQuestion.isArchived && mathQuestion.result.length === 0 && <button className={styles.reset} onClick={handleDelete} >Delete</button>}
                             </section>}
                         </section>
-                        {!printing && showResult && <Result mathQuestion={mathQuestion} />}
+                        {!printing && showResult && <Result mathQuestion={mathQuestion} setShowResult={setShowResult} />}
                         <section>
                             <ListItems list={mathQuestion.body} />
                         </section>

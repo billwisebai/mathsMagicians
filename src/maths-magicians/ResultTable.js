@@ -3,7 +3,9 @@ import styles from './index.module.css'
 import ConfirmDialog from './ConfirmDialog';
 import { useState } from 'react';
 
-const ResultTable = ({ mathQuestion, setEditResult, setUpdatedResult }) => {
+const ResultTable = ({
+    mathQuestion, setEditResult, setUpdatedResult, setShowResult
+}) => {
     const [showDeleteResultConfirmDialog, setShowDeleteResultConfirmDialog] = useState(false);
     const [indexOfDeleteResult, setIndexOfDeleteResult] = useState(null);
     const updateQuestions = useStoreActions((actions) => actions.updateQuestions);
@@ -20,6 +22,9 @@ const ResultTable = ({ mathQuestion, setEditResult, setUpdatedResult }) => {
         setShowDeleteResultConfirmDialog(false);
         mathQuestion.result.splice(indexOfDeleteResult, 1);
         updateQuestions(mathQuestion);
+        if (mathQuestion.result.length === 0) {
+            setShowResult(false);
+        }
     }
 
     return (
